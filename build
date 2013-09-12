@@ -8,13 +8,25 @@
 kernelDir1="Path to kernel 1" #( Example /home/user/path )
 kernelDir2="Path to kernel 2" #( Example /home/user/path )
 kernelDir3="Path to kernel 3" #( Example /home/user/path )
-#More paths can be added if need be
+#More paths can be added by deleting the pound symbol here and 4 sections below
+#kernelDir3="Path to kernel 4" #( Example /home/user/path )
+#kernelDir3="Path to kernel 5" #( Example /home/user/path )
+#
 #Toolchain path
 toolchainDir="Path to toolchain" #( Example /home/user/path )
+#
 #Path where you would like the kernel to be outputed
 exportDir="Path to output folder" #( Example /home/user/Desktop )
+#
 #Change default to what ever you like
+#If you added more kernel dir's at the beginnning enable how many you need below by deleting the pound symbol
 kernelName="Default" #Change to name of kernel
+kernel1Name="Default" #Change to name of kernel
+kernel2Name="Default" #Change to name of kernel
+kernel3Name="Default" #Change to name of kernel
+#kernel4Name="Default" #Change to name of kernel
+#kernel5Name="Default" #Change to name of kernel
+#
 now=$(date +"%Y-%m-%d")
 threads=$(expr 2 + $(grep processor /proc/cpuinfo | wc -l))
 
@@ -31,12 +43,19 @@ echo
 echo
 echo " Please choose a kernel directory"
 echo
-echo " (1)- Kernel#1"
+echo " (1)- $kernel1Name"
 echo
-echo " (2)- Kernel#2"
+echo " (2)- $kernel2Name"
 echo
-echo " (3)- Kernel#3"
+echo " (3)- $kernel3Name"
 echo
+#
+#If you added more kernel dir's at the beginnning enable how many you need below by deleting the pound symbol
+#echo " (4)- $kernel4Name"
+#echo
+#echo " (5)- $kernel5Name"
+#echo
+#
 printf %s " Please Make A Selection: "
 echo
 read num
@@ -46,17 +65,40 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 if [ Kernel#1 ]
 then
 cd $kernelDir1
+echo
+echo " $kernel1Name selected "
 fi
 
 if [ Kernel#2 ]
 then 
 cd $kernelDir2
+echo
+echo " $kernel2Name selected "
 fi
 
 if [ Kernel#3 ]
 then 
 cd $kernelDir3
+echo
+echo " $kernel3Name selected "
 fi
+
+#
+#If you added more kernel dir's at the beginnning enable how many you need below by deleting the pound symbol
+#if [ Kernel#4 ]
+#then 
+#cd $kernelDir4
+#echo
+#echo " $kernel1Name selected "
+#fi
+
+#if [ Kernel#5 ]
+#then 
+#cd $kernelDir5
+#echo
+#echo " $kernel5Name selected "
+#fi
+#
 
 clear
 #xxx= Your config name
