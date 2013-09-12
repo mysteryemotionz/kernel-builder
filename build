@@ -10,7 +10,7 @@ kernelDir2="Path to kernel 2" #( Example /home/user/path )
 kernelDir3="Path to kernel 3" #( Example /home/user/path )
 #More paths can be added if need be
 #Toolchain path
-toolchainDir="path to toolchain" #( Example /home/user/path )
+toolchainDir="Path to toolchain" #( Example /home/user/path )
 #Path where you would like the kernel to be outputed
 exportDir="Path to output folder" #( Example /home/user/Desktop )
 #Change default to what ever you like
@@ -60,7 +60,7 @@ fi
 clear
 #xxx= Your config name
 make ARCH=arm xxx_defconfig
-#Change arm-eabi- to what you current toolchain uses default is 4.6 & 4.7
+#Change arm-eabi- to what you current toolchain uses default is gcc4.6 & gcc4.7 toolchains
 #Change -jx x= 2x processor cores. ( Example dual core would be -j4 )
 make ARCH=arm CROSS_COMPILE=$toolchainDir/bin/arm-eabi- -jx
 
