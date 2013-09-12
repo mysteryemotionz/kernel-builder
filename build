@@ -1,19 +1,31 @@
 #!/bin/bash
-# This is a spin off script related to chadouming's build and package script for Android .
+#This is a spin off script related to Chadouming's build and package script for Android.
+#Created by Evolutionmods & MysteryEmotionz
 
-# Config Section below is where you set your paths-
+#Config Section below is where you set your paths-
 
-kernelDir1="/home/code-craft/source/kernels/JB_LS970ZVC"
-kernelDir2="/home/code-craft/source/kernels/JB_LS970ZVC"
-kernelDir3="/home/code-craft/source/kernels/JB_LS970ZVC"
-toolchainDir="/home/code-craft/source/Linaro_4.7"
+#Kernel path
+kernelDir1="Path to kernel 1" #( Example /home/user/path )
+kernelDir2="Path to kernel 2" #( Example /home/user/path )
+kernelDir3="Path to kernel 3" #( Example /home/user/path )
+#More paths can be added if need be
+#Toolchain path
+toolchainDir="/home/mysteryemotionz/android/toolchains/sabermod" #( Example /home/user/path )
+#Path where you would like the kernel to be outputed
+exportDir="/home/mysteryemotionz/Desktop/kernels" #( Example /home/user/Desktop )
+#Change default to what ever you like
+kernelName="Default" #Change to name of kernel
+now=$(date +"%Y-%m-%d")
 
 # End of Config Section-
 
 clear
-echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
-echo " Welcome back" $USER"        $(date)"
-echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
+echo "                                Kernel-Builder                                 "
+echo "                                      By                                       "
+echo "                    Chadouming, Evolutionmods & MysteryEmotionz                "
+echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
+echo " Welcome back" $USER"                      $(date)"
+echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
 echo 
 echo
 echo " Please choose a kernel directory"
@@ -27,6 +39,8 @@ echo
 printf %s " Please Make A Selection: "
 echo
 read num
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 if [ Kernel#1 ]
 then
@@ -44,6 +58,32 @@ cd $kernelDir3
 fi
 
 clear
+#xxx= Your config name
+make ARCH=arm xxx_defconfig
+#Change arm-eabi- to what you current toolchain uses default is 4.6 & 4.7
+#Change -jx x= 2x processor cores. ( Example dual core would be -j4 )
+make ARCH=arm CROSS_COMPILE=$toolchainDir/bin/arm-eabi- -jx
 
-make ARCH=arm j1sp-perf_defconfig
-make ARCH=arm CROSS_COMPILE=$toolchainDir/bin/arm-eabi- -j12
+echo
+echo
+echo " Done compiling your kernel "
+
+echo
+echo
+echo " Now the kernel is going to get packaged in a flashable zip"
+
+echo
+echo
+cp -r $DIR/zip zip2
+mv arch/arm/boot/zImage zip2/kernel/
+cd zip2
+zip -r $kernelName-$now *
+mv $kernelName-$now.zip $exportDir
+cd ..
+rm -r zip2
+cd $DIR
+echo
+echo
+echo " Check your output folder"
+sleep 60
+
