@@ -3,7 +3,7 @@
 
 # Config Section below is where you set your paths-
 
-kernelDir1="/home/code-craft/source/kernels/ $JB_LS970ZVC"
+kernelDir1="/home/code-craft/source/kernels/JB_LS970ZVC"
 kernelDir2="/home/code-craft/source/kernels/JB_LS970ZVC"
 kernelDir3="/home/code-craft/source/kernels/JB_LS970ZVC"
 toolchainDir="/home/code-craft/source/Linaro_4.7"
