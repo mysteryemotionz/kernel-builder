@@ -10,9 +10,9 @@ kernelDir2="Path to kernel 2" #( Example /home/user/path )
 kernelDir3="Path to kernel 3" #( Example /home/user/path )
 #More paths can be added if need be
 #Toolchain path
-toolchainDir="/home/mysteryemotionz/android/toolchains/sabermod" #( Example /home/user/path )
+toolchainDir="path to toolchain" #( Example /home/user/path )
 #Path where you would like the kernel to be outputed
-exportDir="/home/mysteryemotionz/Desktop/kernels" #( Example /home/user/Desktop )
+exportDir="Path to output folder" #( Example /home/user/Desktop )
 #Change default to what ever you like
 kernelName="Default" #Change to name of kernel
 now=$(date +"%Y-%m-%d")
