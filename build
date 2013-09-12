@@ -127,6 +127,6 @@ rm -r zip2
 cd $DIR
 echo
 echo
-echo " Check your output folder"
+echo " Check $exportDir for $kernelName-$now.zip"
 sleep 10s
 ./build
