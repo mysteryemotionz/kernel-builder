@@ -1,0 +1,49 @@
+#!/bin/bash
+# This is a spin off script related to chadouming's build and package script for Android .
+
+# Config Section below is where you set your paths-
+
+kernelDir1="/home/code-craft/source/kernels/ $JB_LS970ZVC"
+kernelDir2="/home/code-craft/source/kernels/JB_LS970ZVC"
+kernelDir3="/home/code-craft/source/kernels/JB_LS970ZVC"
+toolchainDir="/home/code-craft/source/Linaro_4.7"
+
+# End of Config Section-
+
+clear
+echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
+echo " Welcome back" $USER"        $(date)"
+echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
+echo 
+echo
+echo " Please choose a kernel directory"
+echo
+echo " (1)- Kernel#1"
+echo
+echo " (2)- Kernel#2"
+echo
+echo " (3)- Kernel#3"
+echo
+printf %s " Please Make A Selection: "
+echo
+read num
+
+if [ Kernel#1 ]
+then
+cd $kernelDir1
+fi
+
+if [ Kernel#2 ]
+then 
+cd $kernelDir2
+fi
+
+if [ Kernel#3 ]
+then 
+cd $kernelDir3
+fi
+
+clear
+
+make ARCH=arm j1sp-perf_defconfig
+make ARCH=arm CROSS_COMPILE=$toolchainDir/bin/arm-eabi- -j12
