@@ -16,6 +16,7 @@ exportDir="Path to output folder" #( Example /home/user/Desktop )
 #Change default to what ever you like
 kernelName="Default" #Change to name of kernel
 now=$(date +"%Y-%m-%d")
+threads=$(expr 2 + $(grep processor /proc/cpuinfo | wc -l))
 
 # End of Config Section-
 
@@ -61,8 +62,7 @@ clear
 #xxx= Your config name
 make ARCH=arm xxx_defconfig
 #Change arm-eabi- to what you current toolchain uses default is gcc4.6 & gcc4.7 toolchains
-#Change -jx x= 2x processor cores. ( Example dual core would be -j4 )
-make ARCH=arm CROSS_COMPILE=$toolchainDir/bin/arm-eabi- -jx
+make ARCH=arm CROSS_COMPILE=$toolchainDir/bin/arm-eabi- -j$threads
 
 echo
 echo
