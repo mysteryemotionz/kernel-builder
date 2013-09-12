@@ -128,3 +128,4 @@ echo
 echo
 echo " Check your output folder"
 sleep 10s
+./build
