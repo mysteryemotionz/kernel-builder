@@ -27,9 +27,6 @@ kernel3Name="Default" #Change to name of kernel
 #kernel4Name="Default" #Change to name of kernel
 #kernel5Name="Default" #Change to name of kernel
 #
-$recovery="adb reboot recovery"
-
-$fastboot="adb reboot-bootloader"
 
 now=$(date +"%Y-%m-%d")
 threads=$(expr 2 + $(grep processor /proc/cpuinfo | wc -l))
@@ -65,13 +62,6 @@ echo
 read num
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-if [ recovery ]
-then
-adb reboot recovery
-sleep 2s
-./build
-fi
 
 if [ Kernel#1 ]
 then
